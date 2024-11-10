@@ -1,0 +1,26 @@
+﻿@*   @using Stimulsoft.Report;
+  @using Stimulsoft.Report.Mvc;
+
+  <button onclick="openReport()">Open Report</button>
+
+  <div id="reportViewer">
+    
+    @Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+    {
+
+    
+    })
+  </div>
+
+  <script>
+      function openReport() {
+          // Redirects to the action that opens the report
+          window.location.href = '@Url.Action("OpenReport", "Report")';
+
+      }
+  </script>
+
+
+ 
+
+ *@

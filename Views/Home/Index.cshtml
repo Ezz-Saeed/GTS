@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    string path = string.Empty;
+}
+
+@using Stimulsoft.Report
+@using Stimulsoft.Report.Mvc
+
+<button onclick="openReport()">Open Report</button>
+<button onclick="OpenImg()">Open Image</button>
+
+<div class="row col-12">
+    <div id="reportViewer" class="mt-5 mb-5 col-8"></div>
+    <div class="col-4">
+        <img id="imgViewer" class="img-fluid"  alt="Alternate Text" />
+    </div>
+</div>
+
+    <script>
+        function openReport() {
+            fetch('@Url.Action("OpenReport", "Report")')
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById("reportViewer").innerText = data.report;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function OpenImg() {
+            fetch('@Url.Action("OpenImage","Report")').then(response => response.json())
+                .then(data => {
+                console.log(data.imgUrl)
+                document.getElementById("imgViewer").src = data.imgUrl;
+                
+                })
+        }
+</script>
+
+
